@@ -31,6 +31,10 @@ class TrackAdder {
                     const newTrack = new Track(indexablePaths[i].path);
                     this.trackFiller.addFileMetadataToTrack(newTrack, false);
 
+                    if(newTrack.mimeType == 'audio/wav') {
+                        newTrack.duration = newTrack.duration / 2;
+                    }
+
                     this.trackRepository.addTrack(newTrack);
                     const addedTrack = this.trackRepository.getTrackByPath(newTrack.path);
 
